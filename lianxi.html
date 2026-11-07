@@ -36,11 +36,11 @@
     .box {
         position: absolute;
         top: 3%;
-        left: 90%;
+        left: 92%;
         transform: translate(-50%, -50%);
-        width: 25vw;
+        width: 15vw;
         height: 5vh;
-        background: linear-gradient(to right rgba(91, 227, 17, 0.473), rgba(6, 244, 6, 0.144) 50%, rgba(239, 237, 237, 0.03));
+        background: linear-gradient(-22deg, rgba(17, 227, 220, 0.701), rgba(6, 137, 244, 0.541) 50%, rgba(239, 237, 237, 0.03));
 
         z-index: 1;
     }
@@ -117,6 +117,66 @@
         opacity: 1;
         visibility: visible;
         left: 100%;
+    }
+
+    .hi {
+        position: absolute;
+        left: 6vw;
+        top: 46%;
+        transform: translateY(-50%);
+        z-index: 3;
+        color: #fff;
+        font-family: "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+    }
+
+    .hi .hello {
+        font-size: 1.8vh;
+        font-weight: 600;
+        letter-spacing: 0.35em;
+        opacity: 0;
+        animation: hello 0.8s 0.2s forwards;
+    }
+
+    .hi .title {
+        font-size: 6vh;
+        font-weight: 700;
+        line-height: 1.15;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .hi .title span {
+        display: inline-block;
+        opacity: 0;
+     animation: tiaod 0.55s calc(var(--i) * 0.06s + 0.5s) forwards;
+    }
+
+    @keyframes tiaod {
+        0% {
+            opacity: 0;
+            transform: translateY(0.45em) scale(0.7);
+        }
+
+        60% {
+            opacity: 1;
+            transform: translateY(-0.05em) scale(1.05);
+        }
+
+        100% {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @keyframes hello {
+        from {
+            opacity: 0;
+            transform: translateY(1vh);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
     }
 
     .site2 {
@@ -452,6 +512,11 @@
             </div>
 
         </div>
+        <div class="hi">
+            <p class="hello">你好!</p>
+            <h2 class="title" data-text="欢迎来到"></h2>
+            <h2 class="title" data-text="我的个人网站"></h2>
+        </div>
     </div>
     <div class="site2" id="site2" style="display: none;">
         <video class="ye" src="cf38ce4c2f511d56.mp4" muted loop autoplay playsinline preload="auto"></video>
@@ -676,8 +741,19 @@
                 }
             }
 
-
-
+            //把标题文字拆成单个字符，逐个做跳出动画
+            let hiIndex = 0;
+            document.querySelectorAll('.hi .title').forEach(function (el) {
+                let text = el.dataset.text;
+                el.innerHTML = '';
+                for (let ch of text) {
+                    let span = document.createElement('span');
+                    span.textContent =  ch;
+                    span.style.setProperty('--i', hiIndex);
+                    hiIndex++;
+                    el.appendChild(span);
+                }
+            });
         </script>
     </div>
 
