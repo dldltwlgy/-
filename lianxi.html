@@ -35,21 +35,21 @@
 
     .box {
         position: absolute;
-        top: 3%;
-        left: 92%;
+        top: 60%;
+        left: 15%;
         transform: translate(-50%, -50%);
         width: 15vw;
         height: 5vh;
-        background: linear-gradient(-22deg, rgba(17, 227, 220, 0.701), rgba(6, 137, 244, 0.541) 50%, rgba(239, 237, 237, 0.03));
-
         z-index: 1;
+
     }
 
     .w1 {
         position: absolute;
         top: 0%;
         left: 0%;
-        ;
+        background: linear-gradient(-225deg, rgba(0, 132, 255, 0.386), rgba(6, 46, 244, 0.623) 50%, rgba(239, 237, 237, 0.03));
+        animation: hello 1s 0.5s forwards;
     }
 
     .button1 {
@@ -83,8 +83,9 @@
     .w2 {
         position: absolute;
         top: 0%;
-        left: 30%;
-
+        left: 50%;
+        background: linear-gradient(-225deg, rgba(177, 231, 30, 0.55), rgba(4, 212, 73, 0.559) 50%, rgba(239, 237, 237, 0.03));
+        animation: hello 1s 0.5s forwards;
     }
 
     .button2 {
@@ -147,7 +148,7 @@
     .hi .title span {
         display: inline-block;
         opacity: 0;
-     animation: tiaod 0.55s calc(var(--i) * 0.06s + 0.5s) forwards;
+        animation: tiaod 0.55s calc(var(--i) * 0.06s + 0.5s) forwards;
     }
 
     @keyframes tiaod {
@@ -741,14 +742,13 @@
                 }
             }
 
-            //把标题文字拆成单个字符，逐个做跳出动画
             let hiIndex = 0;
             document.querySelectorAll('.hi .title').forEach(function (el) {
                 let text = el.dataset.text;
                 el.innerHTML = '';
                 for (let ch of text) {
                     let span = document.createElement('span');
-                    span.textContent =  ch;
+                    span.textContent = ch;
                     span.style.setProperty('--i', hiIndex);
                     hiIndex++;
                     el.appendChild(span);
